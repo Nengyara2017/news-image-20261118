@@ -2,208 +2,288 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>The World in One Day — 18 November 2026</title>
+<title>The World in One Day — Wednesday, 18 November 2026</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1024px; height: 1024px; }
   body {
-    width: 1024px; height: 1024px;
-    background: #f4efe4;
-    color: #14213d;
+    background: #f6f1e7;
+    color: #191713;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { padding: 16px 24px 14px; height: 1024px; }
+
+  /* ---------- Masthead ---------- */
+  .masthead { text-align: center; }
+  .title {
     font-family: Georgia, "Times New Roman", serif;
-    padding: 26px 30px 18px;
+    font-size: 58px; font-weight: 700; letter-spacing: 1px;
+    line-height: 1.04; color: #191713;
   }
-  .masthead {
-    text-align: center;
-    font-size: 58px; font-weight: 900;
-    letter-spacing: 1px;
-    color: #14213d;
-    line-height: 1.05;
+  .dateline {
+    margin-top: 7px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 38px; font-weight: 700; letter-spacing: 0.5px;
+    color: #a31621;
   }
-  .date {
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 34px; font-weight: 800;
-    letter-spacing: 2px;
-    color: #b3122e;
-    margin-top: 6px;
-  }
-  .rule-double {
-    border-top: 4px solid #14213d;
-    border-bottom: 1px solid #14213d;
-    height: 7px;
-    margin: 14px 0 16px;
-  }
+  .rule-thick { height: 5px; background: #191713; margin-top: 12px; }
+  .rule-thin  { height: 2px; background: #191713; margin-top: 3px; }
+
+  /* ---------- Grid ---------- */
   .grid {
+    margin-top: 14px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 14px;
-    height: 668px;
+    gap: 10px;
   }
   .panel {
-    background: #fbf8f0;
-    border: 1px solid #d8d0bd;
-    border-top: 6px solid #b3122e;
+    background: #fffdf6;
+    border: 1.5px solid #d9d2c0;
+    border-top: 6px solid var(--accent, #191713);
     padding: 14px 16px 10px;
     display: flex;
     gap: 14px;
-    overflow: hidden;
+    align-items: flex-start;
   }
-  .panel.c-blue   { border-top-color: #1f4e9c; }
-  .panel.c-red    { border-top-color: #b3122e; }
-  .panel.c-purple { border-top-color: #5b2ea6; }
-  .panel.c-navy   { border-top-color: #14213d; }
-  .panel.c-teal   { border-top-color: #0e7a6b; }
-  .panel.c-gold   { border-top-color: #c07f10; }
-  .icon { flex: 0 0 84px; padding-top: 8px; }
-  .icon svg { width: 84px; height: 84px; }
+  .icon { flex: 0 0 84px; width: 84px; height: 84px; margin-top: 2px; }
+  .icon svg { width: 84px; height: 84px; display: block; }
   .text { flex: 1; min-width: 0; }
-  .kicker {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 13px; font-weight: 800;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
+  .tag {
+    font-size: 13px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--accent, #191713);
     margin-bottom: 5px;
   }
-  .c-blue .kicker   { color: #1f4e9c; }
-  .c-red .kicker    { color: #b3122e; }
-  .c-purple .kicker { color: #5b2ea6; }
-  .c-navy .kicker   { color: #14213d; }
-  .c-teal .kicker   { color: #0e7a6b; }
-  .c-gold .kicker   { color: #c07f10; }
-  h2 {
-    font-size: 27px; line-height: 1.08;
-    font-weight: 900;
-    margin-bottom: 7px;
+  .headline {
+    font-size: 28px; font-weight: 800; line-height: 1.1;
+    color: #191713; margin-bottom: 7px;
   }
-  p {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15.5px; line-height: 1.38;
-    color: #33302a;
+  .summary {
+    font-size: 18px; line-height: 1.36; color: #332f28;
   }
+
+  /* ---------- Lead story: full width, dominant ---------- */
+  .lead {
+    grid-column: 1 / -1;
+    background: #fdeceb;
+    border-top-width: 7px;
+    padding: 16px 20px 14px;
+    gap: 18px;
+  }
+  .lead .icon { flex-basis: 96px; width: 96px; height: 96px; }
+  .lead .icon svg { width: 96px; height: 96px; }
+  .lead .headline { font-size: 36px; line-height: 1.08; margin-bottom: 8px; }
+  .lead .summary { font-size: 20px; line-height: 1.4; }
+
+  /* ---------- Science band: full width ---------- */
+  .band {
+    grid-column: 1 / -1;
+    padding: 10px 18px 8px;
+    gap: 16px;
+  }
+  .band .icon { flex-basis: 80px; width: 80px; height: 80px; }
+  .band .icon svg { width: 80px; height: 80px; }
+  .band .headline { font-size: 30px; }
+
+  /* ---------- By the numbers ---------- */
   .numbers {
-    background: #14213d;
-    color: #f4efe4;
-    margin-top: 14px;
-    padding: 12px 18px 14px;
+    margin-top: 12px;
+    background: #191713;
+    color: #f6f1e7;
+    padding: 8px 22px 7px;
+    height: 88px;
   }
-  .numbers h3 {
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    font-size: 13px; letter-spacing: 4px;
-    color: #e8b64c;
-    margin-bottom: 10px;
+  .numbers-title {
+    font-size: 13px; font-weight: 700; letter-spacing: 3.5px;
+    text-transform: uppercase; color: #e8b64c;
+    margin-bottom: 6px; text-align: center;
   }
-  .nums {
+  .numbers-row {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 18px;
   }
-  .num { text-align: center; padding: 0 12px; border-left: 1px solid #3a4a6b; }
-  .num:first-child { border-left: none; }
-  .num b {
-    display: block;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px; font-weight: 900;
+  .stat { text-align: center; }
+  .stat + .stat { border-left: 1px solid #4a463d; }
+  .stat-num {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 28px; font-weight: 700; line-height: 1.05;
     color: #ffffff;
-    margin-bottom: 3px;
   }
-  .num span {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12.5px; line-height: 1.3;
-    color: #cfd6e4;
+  .stat-label {
+    margin-top: 3px;
+    font-size: 13px; line-height: 1.3; color: #cfc9b8;
   }
+
   .footer {
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 13px; letter-spacing: 3px;
-    color: #6b6455;
-    margin-top: 12px;
+    margin-top: 4px; text-align: center;
+    font-size: 13px; letter-spacing: 1.5px; color: #6b6558;
+    text-transform: uppercase;
   }
 </style>
 </head>
 <body>
-  <div class="masthead">THE WORLD IN ONE DAY</div>
-  <div class="date">WEDNESDAY, 18 NOVEMBER 2026</div>
-  <div class="rule-double"></div>
+<div class="page">
 
-  <div class="grid">
-    <div class="panel c-red">
+  <header class="masthead">
+    <div class="title">THE WORLD IN ONE DAY</div>
+    <div class="dateline">WEDNESDAY, 18 NOVEMBER 2026</div>
+    <div class="rule-thick"></div>
+    <div class="rule-thin"></div>
+  </header>
+
+  <main class="grid">
+
+    <!-- 1. LEAD: MIDDLE EAST -->
+    <section class="panel lead" style="--accent:#a31621;">
       <div class="icon">
-        <svg viewBox="0 0 100 100"><g fill="#b3122e"><path d="M50 8 L62 34 L38 34 Z"/><rect x="46" y="34" width="8" height="26"/><path d="M20 66 L80 66 L72 82 L28 82 Z"/></g><path d="M12 90 Q30 82 48 90 T84 90" stroke="#b3122e" stroke-width="4" fill="none"/><circle cx="70" cy="18" r="5" fill="#e8b64c"/></svg>
+        <svg viewBox="0 0 64 64" fill="none">
+          <!-- missile arcing over Gulf waves, shield below -->
+          <path d="M14 34 L34 10 L40 14 L22 36 Z" fill="#a31621"/>
+          <path d="M34 10 L46 4 L44 16 Z" fill="#a31621"/>
+          <path d="M40 14 L50 10" stroke="#a31621" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M10 40 L18 34 L26 40" stroke="#a31621" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M6 52 Q12 48 18 52 T30 52 T42 52 T54 52" stroke="#1d4e89" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M6 58 Q12 54 18 58 T30 58 T42 58 T54 58" stroke="#1d4e89" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="50" cy="30" r="3" fill="#e8b64c"/>
+        </svg>
       </div>
       <div class="text">
-        <div class="kicker">Middle East</div>
-        <h2>Iran Strikes Back in the Gulf</h2>
-        <p>US jets struck an Iranian Revolutionary Guard missile site on Qeshm Island on Tuesday. Early Wednesday, Iran fired drones and missiles at US bases in Kuwait and Bahrain; both countries say their air defences intercepted them.</p>
+        <div class="tag">Middle East &middot; Lead Story</div>
+        <div class="headline">Iran Strikes Back in the Gulf</div>
+        <div class="summary">US jets struck an Iranian Revolutionary Guard missile site on Qeshm Island on Tuesday. Early Wednesday, Iran fired drones and missiles at US bases in Kuwait and Bahrain &mdash; both countries say their air defences intercepted them.</div>
       </div>
-    </div>
+    </section>
 
-    <div class="panel c-blue">
+    <!-- 2. UKRAINE -->
+    <section class="panel" style="--accent:#1d4e89;">
       <div class="icon">
-        <svg viewBox="0 0 100 100"><path d="M8 62 Q50 22 92 62" stroke="#1f4e9c" stroke-width="7" fill="none"/><rect x="14" y="62" width="8" height="20" fill="#1f4e9c"/><rect x="46" y="62" width="8" height="20" fill="#1f4e9c"/><rect x="78" y="62" width="8" height="20" fill="#1f4e9c"/><path d="M50 34 L58 52 L42 52 Z" fill="#b3122e"/><path d="M10 90 Q28 82 46 90 T82 90" stroke="#1f4e9c" stroke-width="4" fill="none"/></svg>
+        <svg viewBox="0 0 64 64" fill="none">
+          <!-- broken bridge: two deck halves, arch, red crack -->
+          <path d="M6 42 H26 M38 42 H58" stroke="#1d4e89" stroke-width="5" stroke-linecap="round"/>
+          <path d="M10 42 V52 M26 42 V52 M38 42 V52 M54 42 V52" stroke="#1d4e89" stroke-width="4"/>
+          <path d="M8 42 Q32 12 56 42" stroke="#1d4e89" stroke-width="3.5"/>
+          <path d="M30 32 L34 42 L30 50" stroke="#a31621" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M32 28 L28 36 M34 30 L38 38" stroke="#a31621" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
       </div>
       <div class="text">
-        <div class="kicker">Ukraine</div>
-        <h2>Kerch Bridge Hit Again</h2>
-        <p>Ukraine struck the Crimea (Kerch) Bridge for a second day; part of its road span collapsed into the strait. Ukraine also hit two Russian oil refineries overnight.</p>
+        <div class="tag">Ukraine</div>
+        <div class="headline">Kerch Bridge Hit Again</div>
+        <div class="summary">Ukraine struck the Crimea Bridge for a second day; part of its road span collapsed. It also hit two Russian refineries overnight.</div>
       </div>
-    </div>
+    </section>
 
-    <div class="panel c-purple">
+    <!-- 3. DIPLOMACY -->
+    <section class="panel" style="--accent:#5b21b6;">
       <div class="icon">
-        <svg viewBox="0 0 100 100"><circle cx="32" cy="30" r="16" fill="#5b2ea6"/><circle cx="68" cy="30" r="16" fill="#5b2ea6"/><circle cx="50" cy="62" r="16" fill="#5b2ea6"/><path d="M14 88 Q50 66 86 88 L86 96 L14 96 Z" fill="#5b2ea6"/></svg>
+        <svg viewBox="0 0 64 64" fill="none">
+          <!-- three leaders meeting -->
+          <circle cx="16" cy="20" r="9" fill="#5b21b6"/>
+          <circle cx="32" cy="14" r="9" fill="#5b21b6"/>
+          <circle cx="48" cy="20" r="9" fill="#5b21b6"/>
+          <path d="M4 52 Q6 36 16 36 Q26 36 28 52 Z" fill="#5b21b6"/>
+          <path d="M20 52 Q22 30 32 30 Q42 30 44 52 Z" fill="#5b21b6"/>
+          <path d="M36 52 Q38 36 48 36 Q58 36 60 52 Z" fill="#5b21b6"/>
+        </svg>
       </div>
       <div class="text">
-        <div class="kicker">Diplomacy</div>
-        <h2>Xi and Putin Meet Before Trump Summit</h2>
-        <p>Xi Jinping and Vladimir Putin met in Shenzhen on Wednesday ahead of Thursday&rsquo;s first three-way summit with Donald Trump at APEC. Xi pledged to stand against trade protectionism; Trump arrived in Shenzhen and was greeted by Xi.</p>
+        <div class="tag">Diplomacy</div>
+        <div class="headline">Xi and Putin Meet Before Trump Summit</div>
+        <div class="summary">Xi and Putin met in Shenzhen ahead of Thursday&rsquo;s three-way summit with Trump.</div>
       </div>
-    </div>
+    </section>
 
-    <div class="panel c-navy">
+    <!-- 4. UNITED STATES -->
+    <section class="panel" style="--accent:#1e3a5f;">
       <div class="icon">
-        <svg viewBox="0 0 100 100"><path d="M50 10 L88 34 L82 88 L18 88 L12 34 Z" fill="#14213d"/><rect x="42" y="46" width="16" height="26" fill="#f4efe4"/><path d="M34 88 L38 58 L62 58 L66 88 Z" fill="#f4efe4" opacity="0.35"/><rect x="10" y="88" width="80" height="6" fill="#14213d"/></svg>
+        <svg viewBox="0 0 64 64" fill="none">
+          <!-- capitol dome -->
+          <path d="M32 6 C26 10 22 16 22 24 L42 24 C42 16 38 10 32 6 Z" fill="#1e3a5f"/>
+          <rect x="30" y="2" width="4" height="6" fill="#1e3a5f"/>
+          <rect x="14" y="24" width="36" height="5" fill="#1e3a5f"/>
+          <rect x="18" y="31" width="28" height="4" fill="#1e3a5f"/>
+          <path d="M20 37 V52 M27 37 V52 M34 37 V52 M41 37 V52" stroke="#1e3a5f" stroke-width="3.5"/>
+          <path d="M14 56 H50" stroke="#1e3a5f" stroke-width="3" stroke-linecap="round"/>
+          <rect x="29" y="42" width="6" height="10" fill="#1e3a5f"/>
+        </svg>
       </div>
       <div class="text">
-        <div class="kicker">United States</div>
-        <h2>Democrats Take the Senate</h2>
-        <p>Democrat Mary Peltola defeated Republican Senator Dan Sullivan in Alaska, the last undecided Senate race; Democrats take a 56&ndash;44 majority, their largest since 2009.</p>
+        <div class="tag">United States</div>
+        <div class="headline">Democrats Take the Senate</div>
+        <div class="summary">Democrat Mary Peltola beat Republican Dan Sullivan in Alaska. Democrats take a 56&ndash;44 majority.</div>
       </div>
-    </div>
+    </section>
 
-    <div class="panel c-teal">
+    <!-- 5. HEALTH -->
+    <section class="panel" style="--accent:#0f766e;">
       <div class="icon">
-        <svg viewBox="0 0 100 100"><circle cx="50" cy="46" r="34" fill="#0e7a6b"/><circle cx="38" cy="38" r="6" fill="#f4efe4"/><circle cx="60" cy="34" r="5" fill="#f4efe4"/><circle cx="56" cy="56" r="6" fill="#f4efe4"/><circle cx="38" cy="58" r="4" fill="#f4efe4"/><path d="M50 84 L58 96 L42 96 Z" fill="#0e7a6b"/></svg>
+        <svg viewBox="0 0 64 64" fill="none">
+          <!-- virus: spiked circle -->
+          <circle cx="32" cy="32" r="17" fill="#0f766e"/>
+          <circle cx="26" cy="28" r="3.5" fill="#f6f1e7"/>
+          <circle cx="38" cy="26" r="2.5" fill="#f6f1e7"/>
+          <circle cx="30" cy="38" r="2.5" fill="#f6f1e7"/>
+          <circle cx="39" cy="37" r="3" fill="#f6f1e7"/>
+          <path d="M32 15 V8 M32 56 V49 M15 32 H8 M56 32 H49 M20 20 L15 15 M44 20 L49 15 M20 44 L15 49 M44 44 L49 49" stroke="#0f766e" stroke-width="3" stroke-linecap="round"/>
+          <path d="M26 60 L32 52 L38 60" stroke="#0f766e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
       <div class="text">
-        <div class="kicker">Health</div>
-        <h2>Ebola Passes 11,000 Cases</h2>
-        <p>The Ebola outbreak in DR Congo has more than doubled in three months to over 11,000 cases and 5,400 deaths, the UN said; nearly three in four infected children under 5 do not survive.</p>
+        <div class="tag">Health</div>
+        <div class="headline">Ebola Passes 11,000 Cases</div>
+        <div class="summary">Ebola in DR Congo has more than doubled in three months to over 11,000 cases and 5,400 deaths, the UN said.</div>
       </div>
-    </div>
+    </section>
 
-    <div class="panel c-gold">
+    <!-- 6. SCIENCE BAND -->
+    <section class="panel band" style="--accent:#b45309;">
       <div class="icon">
-        <svg viewBox="0 0 100 100"><circle cx="50" cy="44" r="26" fill="#c07f10"/><circle cx="50" cy="44" r="14" fill="#e8b64c"/><g stroke="#c07f10" stroke-width="5" stroke-linecap="round"><line x1="50" y1="6" x2="50" y2="14"/><line x1="50" y1="74" x2="50" y2="82"/><line x1="12" y1="44" x2="20" y2="44"/><line x1="80" y1="44" x2="88" y2="44"/><line x1="23" y1="17" x2="29" y2="23"/><line x1="71" y1="65" x2="77" y2="71"/><line x1="77" y1="17" x2="71" y2="23"/><line x1="29" y1="65" x2="23" y2="71"/></g><path d="M30 92 L44 78 L56 78 L70 92 Z" fill="#14213d"/></svg>
+        <svg viewBox="0 0 64 64" fill="none">
+          <!-- Voyager probe with dish and starburst -->
+          <circle cx="32" cy="32" r="9" fill="#b45309"/>
+          <path d="M32 32 L52 14" stroke="#b45309" stroke-width="3" stroke-linecap="round"/>
+          <path d="M46 8 L58 8 L58 20 Z" fill="#e8b64c"/>
+          <path d="M32 32 L14 48" stroke="#b45309" stroke-width="3" stroke-linecap="round"/>
+          <path d="M10 52 L18 44 L22 50 Z" fill="#b45309"/>
+          <circle cx="52" cy="40" r="3" fill="#e8b64c"/>
+          <circle cx="12" cy="14" r="2.5" fill="#e8b64c"/>
+          <path d="M32 6 V12 M32 52 V58 M6 32 H12 M52 32 H58" stroke="#b45309" stroke-width="2" stroke-linecap="round"/>
+        </svg>
       </div>
       <div class="text">
-        <div class="kicker">Science</div>
-        <h2>Voyager 1, One Light-Day Away</h2>
-        <p>Voyager 1 reached one light-day from Earth on Wednesday at 5:16 a.m. ET &mdash; about 16 billion miles &mdash; a distance no human-made object has crossed before, NASA&rsquo;s Jet Propulsion Laboratory said.</p>
+        <div class="tag">Science</div>
+        <div class="headline">Voyager 1, One Light-Day Away</div>
+        <div class="summary">Voyager 1 reached one light-day from Earth on Wednesday at 5:16 a.m. ET &mdash; about 16 billion miles &mdash; a distance no human-made object has crossed before, NASA&rsquo;s Jet Propulsion Laboratory said.</div>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="numbers">
+    <div class="numbers-title">By the Numbers</div>
+    <div class="numbers-row">
+      <div class="stat">
+        <div class="stat-num">11,000+</div>
+        <div class="stat-label">Ebola cases in DR Congo</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5,412</div>
+        <div class="stat-label">US measles cases in 2026</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">56&ndash;44</div>
+        <div class="stat-label">Democrats&rsquo; Senate majority</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">16bn miles</div>
+        <div class="stat-label">Voyager 1 from Earth</div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="numbers">
-    <h3>BY THE NUMBERS</h3>
-    <div class="nums">
-      <div class="num"><b>11,000+</b><span>Ebola cases in DR Congo</span></div>
-      <div class="num"><b>5,412</b><span>US measles cases in 2026 &mdash; measles-free status lost after 26 years</span></div>
-      <div class="num"><b>56&ndash;44</b><span>Democrats&rsquo; Senate majority</span></div>
-      <div class="num"><b>16bn miles</b><span>Voyager 1 from Earth</span></div>
-    </div>
-  </div>
+  <footer class="footer">Six stories &middot; one day &middot; 18 November 2026</footer>
 
-  <div class="footer">SIX STORIES &middot; ONE DAY &middot; 18 NOVEMBER 2026</div>
+</div>
 </body>
 </html>
